@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>Cluedo Sheets — Detective Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <h1>Cluedo Sheets</h1>
+        <p class="tagline">Old-school detective notes. Cross off suspects, weapons & rooms.</p>
+        <div class="controls">
+          <button id="newGameBtn" class="btn">New Game</button>
+          <button id="saveGameBtn" class="btn">Save Game</button>
+          <button id="loadGameBtn" class="btn">Load Games</button>
+          <button id="clearAllBtn" class="btn ghost">Clear All</button>
+          <button id="exportBtn" class="btn ghost">Export</button>
+          <button id="importBtn" class="btn ghost">Import</button>
+          <input type="file" id="importFile" accept="application/json" hidden />
+        </div>
+        <div class="game-meta">
+          <label>
+            <span>Game Name</span>
+            <input id="gameName" type="text" placeholder="e.g. Sunday Night Cluedo" />
+          </label>
+          <label>
+            <span>Came From (Where You Came)</span>
+            <input id="cameFrom" type="text" placeholder="e.g. Mike’s house / Lounge" />
+          </label>
+          <label>
+            <span>Notes</span>
+            <textarea id="notes" rows="2" placeholder="Extra notes..."></textarea>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="card-grid">
+        <!-- Suspects -->
+        <section class="card suspects">
+          <h2>Suspects</h2>
+          <ul class="list">
+            <li><label><input type="checkbox" data-type="suspects" data-key="Col. Mustard" /> Col. Mustard</label></li>
+            <li><label><input type="checkbox" data-type="suspects" data-key="Prof. Plum" /> Prof. Plum</label></li>
+            <li><label><input type="checkbox" data-type="suspects" data-key="Rev. Green" /> Rev. Green</label></li>
+            <li><label><input type="checkbox" data-type="suspects" data-key="Mrs. Peacock" /> Mrs. Peacock</label></li>
+            <li><label><input type="checkbox" data-type="suspects" data-key="Miss Scarlett" /> Miss Scarlett</label></li>
+            <li><label><input type="checkbox" data-type="suspects" data-key="Mrs. White" /> Mrs. White</label></li>
+          </ul>
+        </section>
+
+        <!-- Weapons -->
+        <section class="card weapons">
+          <h2>Weapons</h2>
+          <ul class="list">
+            <li><label><input type="checkbox" data-type="weapons" data-key="Dagger" /> Dagger</label></li>
+            <li><label><input type="checkbox" data-type="weapons" data-key="Candlestick" /> Candlestick</label></li>
+            <li><label><input type="checkbox" data-type="weapons" data-key="Revolver" /> Revolver</label></li>
+            <li><label><input type="checkbox" data-type="weapons" data-key="Rope" /> Rope</label></li>
+            <li><label><input type="checkbox" data-type="weapons" data-key="Lead Piping" /> Lead Piping</label></li>
+            <li><label><input type="checkbox" data-type="weapons" data-key="Spanner" /> Spanner</label></li>
+          </ul>
+        </section>
+
+        <!-- Rooms -->
+        <section class="card rooms">
+          <h2>Rooms</h2>
+          <ul class="list">
+            <li><label><input type="checkbox" data-type="rooms" data-key="Hall" /> Hall</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Lounge" /> Lounge</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Dining Room" /> Dining Room</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Kitchen" /> Kitchen</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Ball Room" /> Ball Room</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Conservatory" /> Conservatory</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Billiard Room" /> Billiard Room</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Library" /> Library</label></li>
+            <li><label><input type="checkbox" data-type="rooms" data-key="Study" /> Study</label></li>
+          </ul>
+        </section>
+      </div>
+      <footer class="footer">Built for the classic Cluedo. All rights reserved to their respective owners.</footer>
+    </main>
+
+    <!-- Load Games Modal -->
+    <dialog id="loadModal">
+      <form method="dialog" class="modal-content">
+        <h3>Saved Games</h3>
+        <div id="savedGamesList" class="saved-list"></div>
+        <menu class="modal-actions">
+          <button value="cancel" class="btn ghost">Close</button>
+        </menu>
+      </form>
+    </dialog>
+    <script src="script.js"></script>
+  </body>
+</html>
